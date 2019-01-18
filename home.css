@@ -1,0 +1,106 @@
+@charset "UTF-8";
+*{
+  margin: auto;
+}
+img{
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5),-5px -5px 5px rgba(0, 0, 0, 0.5),5px -5px 5px rgba(0, 0, 0, 0.5),-5px 5px 5px rgba(0, 0, 0, 0.5);
+  margin-top: 5px;
+  margin-bottom: 5px;
+}/*
+#topPage{
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.75);
+}*/
+#member{
+  max-width: 1080px;
+  background-image:linear-gradient(rgba(0, 0, 0, 0.75),rgba(255, 255, 255, 0.75));
+  background-size: auto 1080pxs;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+    display:flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    font-size: 25px;
+}
+#member_topinfo{
+  width: 100%;
+  background-color: black;
+  text-align: center;
+  color: white;
+}
+.member_box{
+  margin: 0;
+  position: relative;
+  width: 50%;
+  height:607.5px;
+  border:5px solid #fff;
+  box-sizing: border-box;
+  transition: 0.1s linear background-color;
+}
+.member_check{
+  display: none;
+}
+.member_img{
+  position: absolute;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 0px solid #fff;
+
+}
+.jobbox{
+  color: white;
+  position: absolute;
+  width: 100%;
+    background-color: rgba(0,0,0,0.5);
+  text-align: center;
+  top: 0;
+  line-height: 50px;
+  display: none;
+}
+.namebox{
+  color:white;
+  position: absolute;
+  width: 100%;
+    background-color: rgba(0,0,0,0.5);
+  text-align: center;
+  bottom: 0;
+  line-height: 50px;
+  display: none;
+}
+.article_title{
+  border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  right: 0;
+  left: 0;
+  width: 100%;
+  line-height: 50px;
+  font-size: 30px;
+  color: white;
+}
+@media (min-width: 960px){
+  .member_box{
+    width: 25%;
+  }
+}
+@media (max-height:1080px){
+  .topPage{
+    line-height:1920px;
+  }
+}

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>HOME</title>
+
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/home.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="js/jquery-1.11.2.min.js"></script>
+        <script src="js/home.js"></script>
+
+    </head>
+
+</html>
+
+<body>
+  <div class="menu_flex">
+  <div class="menu_button" onclick="menu_open()">Menu</div>
+  <div class="menu_button" onclick="show_open()">Show</div>
+  <div class="menu_button" onclick="illust_open()">Illust</div>
+  <div class="menu_button" onclick="garally_open()">Garelly</div>
+  <div class="menu_button" onclick="member_open()">Member</div>
+  </div>
+<nav>
+<div onmouseover="article_opacity_out()" style="display:flex; max-width:1080px; background-color:white;">
+<input type="button" onclick="output()" value="表示する" id="output" onmouseover="article_opacity()">
+<input type="button" value="×" id="output" class="cancel" onclick="article_cancel()">
+</div>
+  <div id="menu" onmouseover="article_opacity()">
+  <span style="color:black">見たいものを押して表示ボタンを押してください。複数可能です。</span>
+  <label for="prop1">
+  <div onmouseover="article1()" class="prop1 menu_button_back" style="background-image:linear-gradient(rgba(0, 0, 0, 0.75),rgba(255, 255, 255, 0.75)) , url('img/a.jpg');">
+  <input type="checkbox" id="prop1" name="check1" class="article_check">作品について
+</div></label><label for="prop2">
+  <div onmouseover="article2()" class="prop2 menu_button_back" style="background-image:linear-gradient(rgba(0, 0, 0, 0.75),rgba(255, 255, 255, 0.75)) , url('img/hero.png');">
+  <input type="checkbox" id="prop2" name="check2" class="article_check" onmouseover="article2()">イラストについて
+</div></label><label for="prop3">
+  <div onmouseover="article3()" class="prop3 menu_button_back" style="background-image:linear-gradient(rgba(0, 0, 0, 0.75),rgba(255, 255, 255, 0.75)) , url('img/c.jpg');">
+  <input type="checkbox" id="prop3" name="check3" class="article_check" onmouseover="article3()">ギャラリー
+</div></label><!--<label for="prop4">
+  <div onmouseover="article4()" class="prop4 menu_button_back" style="background-image:linear-gradient(rgba(0, 0, 0, 0.75),rgba(255, 255, 255, 0.75)) , url('img/001.jpg');">
+  <input type="checkbox" id="prop4" name="check4" class="article_check" onmouseover="article4()">他情報
+  </div></label>
+</div>-->
+  <input type="hidden" class=".article_textarea">
+</nav>
+
+  <div id="topPage">
+  </div>
+<article onmouseover="article_opacity_out()">
+
+  <div class="article_home">
+  </div>
+  <!--
+<div class='article article1'>
+  <div class='article_img' style='background-image:url(img/a.jpg);'>
+  </div>
+  <div class='article_line'>
+    テストサンプル
+  </div>
+</div>-->
+</article>
+
+<div id="member_box"></div>
+
+<script>
+$(function(){
+  $("#member_box").load("member.html");
+});
+function member_open(){
+  $("#member_box").css("display","block");
+    $("article").css("display","none");
+      $("nav").css("display","none");
+        $(window).scrollTop(0);
+}
+</script>
+<!--<div onclick="article1()" style="width:100px; height:100px;">
+  article1
+</div>
+<div onclick="article2()">
+  article2
+</div>-->
+<!--<div class="Account" onmouseover="AI()">アイ</div>-->
+
+
+
+</body>
+
+<script>
+article = "";
+function menu_open(){
+  $("nav").css("display","block");
+}
+function article_opacity(){
+  $("article").css("opacity","0.25");
+}
+function article_cancel(){
+  $("nav").css("display","none");
+}
+function article_opacity_out(){
+  $("article").css("opacity","1");
+  $("body").css("background-image","img/hero.png");
+}
+/*function AI(){
+  article += "<div class='article article1'><div class='article_img' style='background-image:url(img/a.jpg);'></div><div class='article_line'>テストテスト</div></div>";
+  $(".article_textarea").html(article);
+//  $("#MainPage").css("background-image","url(images/chara/ai.png)");
+}*/
+function output(){
+$(".article_home").html(article);
+$(".article_textarea").html("");
+article = "";
+$(".article_check").prop('checked', false);
+$("nav").css("display","none");
+$("article").css("display","block");
+  $("#member_box").css("display","none");
+    $(".prop1").css('border-color','rgba(0,0,0,1)');
+      $(".prop2").css('border-color','rgba(0,0,0,1)');
+        $(".prop3").css('border-color','rgba(0,0,0,1)');
+        $('input[name="check1"]').attr('checked','');
+        $('input[name="check2"]').attr('checked','');
+        $('input[name="check3"]').attr('checked','');
+
+  $(window).scrollTop(0);
+}
+
+/*function article1(){
+  $("body").css("background-image","url(img/a.jpg)");
+}
+function article2(){
+  $("body").css("background-image","url(img/b.jpg)");
+}
+function article3(){
+  $("body").css("background-image","url(img/c.jpg)");
+}
+function article4(){
+  $("body").css("background-image","url(img/d.jpg)");
+}*/
+
+function show_open(){
+  article += "<div class='article_title'>作品について</div><div class='article'><label for='article_img1'><input type='checkbox' id='article_img1' class='img_check'><div class='article_img' style='background-image:url(img/a.jpg);'></div></label><div class='article_line'><h2>ヒーロー紹介</h2>猫舌で、高温のものを飲食することが苦手。しかし、料理などを冷ますために息を吹きかけ続けていたら、吹きかけたものを凍らせることができる能力を手に入れました。<br>息を吹きかけて火災を鎮火するなど、活躍するヒーローとなっております。<h2>作品紹介</h2><img src='img/a_1.jpg'><img src='img/a_2.png'><img src='img/a_3.png'><img src='img/a_4.png'><img src='img/a_5.png'><img src='img/a_6.png'>消火活動の様子のスクリーンショットです。情報の登録のあと、消火活動が始まる流れとなっています。</div></div>";
+$(".article_textarea").html(article);
+  output();
+  article = "";
+}
+function illust_open(){
+  article += "<div class='article_title'>イラストについて</div><div class='article'><label for='article_img2'><input type='checkbox' id='article_img2' class='img_check'><div class='article_img' style='background-image:url(img/b.jpg);'></div></label><div class='article_line'><h2>ラフスケッチ</h2><img src='img/h_1.jpg'><h2>アイデアスケッチ</h2><img src='img/h_3.jpg'><img src='img/h_4.jpg'><img src='img/h_2.jpg'><img src='img/hero.png'>ヒーローが活躍する様子を、コマ割りを用いて表現しました。</div></div>";
+    output();
+    article = "";
+}
+function garally_open(){
+  article += "<div class='article_title'>ギャラリー</div><div class='article'><label for='article_img3'><input type='checkbox' id='article_img3' class='img_check'><div class='article_img' style='background-image:url(img/c.jpg);'></div></label><div class='article_line'>前日の設営準備の様子です。<img src='img/g_3.jpg'>段ボールの中に道具を詰めて学校から運搬していただいたものです。<br>道具は壊れず届きました。丁寧に運んでいただいたことに感謝したいです。<img src='img/4.jpg'>一部道具の紹介。背景です。お店できれいに印刷していただいたものを、丁寧に貼り合わせました。<img src='img/6.jpg'>火事の様子を表現するのに使ったのがこちらの商品。<img src='img/b.jpg'><img src='img/a.jpg'><img src='img/g_1.jpg'>写真は以上となります。</div></div>";
+    $(".article_textarea").html(article);
+      output();
+      article = "";
+}
+
+$(function() {
+  //ページ１
+  $('input[name="check1"]').change(function() {
+    var prop = $('#prop1').prop('checked');
+   // もしpropがチェック状態だったら
+    if (prop) {
+      // propでチェックと出力
+      //$('#p1').text('propで取得できたね');
+        article += "<div class='article_title'>作品について</div><div class='article'><label for='article_img1'><input type='checkbox' id='article_img1' class='img_check'><div class='article_img' style='background-image:url(img/a.jpg);'></div></label><div class='article_line'><h2>ヒーロー紹介</h2>猫舌で、高温のものを飲食することが苦手。しかし、料理などを冷ますために息を吹きかけ続けていたら、吹きかけたものを凍らせることができる能力を手に入れました。<br>息を吹きかけて火災を鎮火するなど、活躍するヒーローとなっております。<h2>作品紹介</h2><img src='img/a_1.jpg'><img src='img/a_2.png'><img src='img/a_3.png'><img src='img/a_4.png'><img src='img/a_5.png'><img src='img/a_6.png'>消火活動の様子のスクリーンショットです。情報の登録のあと、消火活動が始まる流れとなっています。</div></div>";
+        $(".article_textarea").html(article);
+          $('.prop1').css('border-color','rgba(255,0,0,1)');
+    } else {
+      // テキストをリセット
+      article = article.replace("<div class='article_title'>作品について</div><div class='article'><label for='article_img1'><input type='checkbox' id='article_img1' class='img_check'><div class='article_img' style='background-image:url(img/a.jpg);'></div></label><div class='article_line'><h2>ヒーロー紹介</h2>猫舌で、高温のものを飲食することが苦手。しかし、料理などを冷ますために息を吹きかけ続けていたら、吹きかけたものを凍らせることができる能力を手に入れました。<br>息を吹きかけて火災を鎮火するなど、活躍するヒーローとなっております。<h2>作品紹介</h2><img src='img/a_1.jpg'><img src='img/a_2.png'><img src='img/a_3.png'><img src='img/a_4.png'><img src='img/a_5.png'><img src='img/a_6.png'>消火活動の様子のスクリーンショットです。情報の登録のあと、消火活動が始まる流れとなっています。</div></div>", "");
+      $('.article_textarea').html(article);
+        $(".prop1").css('border-color','rgba(0,0,0,1)');
+    }
+  });
+  //ページ２
+    $('input[name="check2"]').change(function() {
+      var prop = $('#prop2').prop('checked');
+     // もしpropがチェック状態だったら
+      if (prop) {
+        // propでチェックと出力
+        //$('#p1').text('propで取得できたね');
+        article += "<div class='article_title'>イラストについて</div><div class='article'><label for='article_img2'><input type='checkbox' id='article_img2' class='img_check'><div class='article_img' style='background-image:url(img/b.jpg);'></div></label><div class='article_line'><h2>ラフスケッチ</h2><img src='img/h_1.jpg'><h2>アイデアスケッチ</h2><img src='img/h_3.jpg'><img src='img/h_4.jpg'><img src='img/h_2.jpg'><img src='img/hero.png'>ヒーローが活躍する様子を、コマ割りを用いて表現しました。</div></div>";
+          $(".article_textarea").html(article);
+            $('.prop2').css('border-color','rgba(255,0,0,1)');
+      } else {
+        // テキストをリセット
+        article = article.replace("<div class='article_title'>イラストについて</div><div class='article'><label for='article_img2'><input type='checkbox' id='article_img2' class='img_check'><div class='article_img' style='background-image:url(img/b.jpg);'></div></label><div class='article_line'><h2>ラフスケッチ</h2><img src='img/h_1.jpg'><h2>アイデアスケッチ</h2><img src='img/h_3.jpg'><img src='img/h_4.jpg'><img src='img/h_2.jpg'><img src='img/hero.png'>ヒーローが活躍する様子を、コマ割りを用いて表現しました。</div></div>", "");
+        $('.article_textarea').html(article);
+          $(".prop2").css('border-color','rgba(0,0,0,1)');
+      }
+    });
+    //ページ3
+      $('input[name="check3"]').change(function() {
+        var prop = $('#prop3').prop('checked');
+       // もしpropがチェック状態だったら
+        if (prop) {
+          // <div class='article_title'>ギャラリー</div><div class='article'><label for='article_img3'><input type='checkbox' id='article_img3' class='img_check'><div class='article_img' style='background-image:url(img/c.jpg);'></div></label><div class='article_line'><h2>タイトルが入ります</h2><img src='img/g_1.jpg'><img src='img/g_2.jpg'><img src='img/3.jpg'><img src='img/g_3.jpg'><img src='img/g_4.jpg'>文章が入ります。<br>文章が入ります。<img src='img/3.jpg'><br>文章が入ります。<img src='img/4.jpg'><br>文章が入ります。<img src='img/5.jpg'><br>文章が入ります。<img src='img/6.jpg'><br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。</div></div>
+          article += "<div class='article_title'>ギャラリー</div><div class='article'><label for='article_img3'><input type='checkbox' id='article_img3' class='img_check'><div class='article_img' style='background-image:url(img/c.jpg);'></div></label><div class='article_line'>前日の設営準備の様子です。<img src='img/g_3.jpg'>段ボールの中に道具を詰めて学校から運搬していただいたものです。<br>道具は壊れず届きました。丁寧に運んでいただいたことに感謝したいです。<img src='img/4.jpg'>一部道具の紹介。背景です。お店できれいに印刷していただいたものを、丁寧に貼り合わせました。<img src='img/6.jpg'>火事の様子を表現するのに使ったのがこちらの商品。<img src='img/b.jpg'><img src='img/a.jpg'><img src='img/g_1.jpg'>写真は以上となります。</div></div>";
+            $(".article_textarea").html(article);
+              $('.prop3').css('border-color','rgba(255,0,0,1)');
+        } else {
+          // テキストをリセット
+          article = article.replace("<div class='article_title'>ギャラリー</div><div class='article'><label for='article_img3'><input type='checkbox' id='article_img3' class='img_check'><div class='article_img' style='background-image:url(img/c.jpg);'></div></label><div class='article_line'>前日の設営準備の様子です。<img src='img/g_3.jpg'>段ボールの中に道具を詰めて学校から運搬していただいたものです。<br>道具は壊れず届きました。丁寧に運んでいただいたことに感謝したいです。<img src='img/4.jpg'>一部道具の紹介。背景です。お店できれいに印刷していただいたものを、丁寧に貼り合わせました。<img src='img/6.jpg'>火事の様子を表現するのに使ったのがこちらの商品。<img src='img/b.jpg'><img src='img/a.jpg'><img src='img/g_1.jpg'>写真は以上となります。</div></div>", "");
+          $('.article_textarea').html(article);
+            $(".prop3").css('border-color','rgba(0,0,0,1)');
+        }
+      });
+      //ページ4
+        $('input[name="check4"]').change(function() {
+          var prop = $('#prop4').prop('checked');
+         // もしpropがチェック状態だったら
+          if (prop) {
+            // propでチェックと出力
+            //$('#p1').text('propで取得できたね');
+            article += "<div class='article_title'>そのほか</div><div class='article'><label for='article_img4'><input type='checkbox' id='article_img4' class='img_check'><div class='article_img' style='background-image:url(img/d.jpg);'></div></label><div class='article_line'><h2>タイトルが入ります</h2>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。</div></div>";
+              $(".article_textarea").html(article);
+          } else {
+            // テキストをリセット
+            article = article.replace("<div class='article_title'>そのほか</div><div class='article'><label for='article_img4'><input type='checkbox' id='article_img4' class='img_check'><div class='article_img' style='background-image:url(img/d.jpg);'></div></label><div class='article_line'><h2>タイトルが入ります</h2>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。<br>文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。文章が入ります。</div></div>", "");
+            $('.article_textarea').html(article);
+          }
+        });
+});
+
+
+</script>
+
+<!--
+</div>
+<div class="article_line">
+</div><img src="img/3.jpg"><div class="article_line"></div><img src="img/4.jpg"><div class="article_line"></div><img src="img/5.jpg"><div class="article_line"></div><img src="img/6.jpg"><div class="article_line"></div><img src="img/15.jpg"><div class="article_line"></div><img src="img/16.jpg"><div class="article_line"></div><img src="img/17.jpg"><div class="article_line">
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  *{
+    margin: auto;
+  }
+  body{
+    padding-top: 50px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("img/hero.png");
+  }
+  #menu input{
+    display: none;
+  }
+  .menu_flex{
+    width: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    background-color: black;
+    z-index: 40;
+    font-size: 25px;
+  }
+  .menu_button{
+    text-align: center;
+    background-color: black;
+    color: white;
+    z-index: 20;
+    line-height: 50px;
+  }
+  .cancel{
+    position: absolute !important;
+    width: 50px !important;
+    right: 0;
+    height: 50px !important;
+    background-color: red;
+    color: white;
+    border:2px solid #fff;
+  }
+  article{
+    display: none;
+    position: relative;
+  }
+  nav{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    color: white;
+    text-align: left;
+    display: block;
+    font-size: 25px;
+    z-index: 30;
+    background-color: rgba(255,255,255,0.75);
+  }
+  nav #menu{
+  max-width: 1080px;
+  height: 100%;
+  background-color: rgba(255,255,255,0.75);
+  box-sizing: border-box;
+  }
+  nav #menu div{
+    width: 100%;
+    height: 20%;
+    margin: auto;
+    color: white;
+    border-radius: 10px;
+    border: solid 5px rgba(0,0,0,1);
+    background-size: contain;
+    box-sizing: border-box;
+    }
+    .prop1{
+    background-color: black;
+
+    }
+    .prop2{
+    background-color: black;
+
+    }
+    .prop3{
+    background-color: black;
+
+    }
+    .prop4{
+    background-color: black;
+
+    }
+  nav #menu div:hover{
+  }
+  nav #menu .menu_button_back{
+    background-size: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  #output{
+    display: block;
+    position: relative;
+    width: 50%;
+    height: 50px;
+    z-index: 15;
+    font-size: 25px;
+  }
+  .article{
+    max-width: 100%;
+    background-color: rgba(255,255,255,0.75);
+  }
+  .article img{
+    display: block;
+    max-width: 90%;
+  }
+  .article_img{
+    max-width: 100%;
+    height: 303.75px;
+    background-size: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: 0.2s linear height;
+    background-color: black;
+  }
+  .article_line{
+    max-width: 1080px;
+    background-color: white;
+    font-size: 25px;
+  }
+  .img_check{
+    display: none;
+  }
+  .img_check:checked + .article_img{
+    height: 607.5px;
+  }
+  #member_box{
+    display: none;
+  }
+</style>
